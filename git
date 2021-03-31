@@ -1,0 +1,36 @@
+# Conf git after installation
+    git config --global user.name "Dawichi"
+    git config --global user.email "example@domain.com"
+
+# Check git conf
+    git config --global -e
+
+
+
+
+# basic usage
+    git init                create the repositoryt
+    git status              check files visible to git
+    git add .               stage all files
+    git rm .                unstage all files
+    git commit -m 'text'    make a commit with a name 'text'commands
+    git checkout -- .       recover last commit status
+
+# add files 
+    git add "*.txt"         adds all txt files in the whole project
+    git add *.txt           adds all txt files in current dir
+
+    git add --all           adds all files
+    git add pdfs/           adds all files inside pdfs/ dir
+    git add pdfs/.pdf       adds all pdfs inside
+
+
+
+# git history
+    git log 
+    git log --oneline
+    git log --outline --decorate --all --graph
+
+
+# extra conf alias
+    > git config --global alias.lg "log --online"
