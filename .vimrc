@@ -6,7 +6,7 @@
 " 	| |  | | |_| |  \ V /| | | | | | | | | (__  
 " 	|_|  |_/\__, | (_)_/ |_|_| |_| |_|_|  \___| 
 "	         __/ |                              
-"		    |___/
+"		       |___/
 "
 "
 "	Hi! I have spent several months perfecting this file to a level where
@@ -40,36 +40,36 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin('~/.vim/plugged')
 " basics
 Plug 'scrooloose/nerdtree'              " Directory explorer
-Plug 'tpope/vim-commentary'		        " Comment with 'gcc' or 'gc' + Arrows
-Plug 'morhetz/gruvbox'			        " Color theme
-Plug 'ryanoasis/vim-devicons'		    " Devicons - needs a NerdFont installed
+Plug 'tpope/vim-commentary'		          " Comment with 'gcc' or 'gc' + Arrows
+Plug 'morhetz/gruvbox'			            " Color theme
+Plug 'ryanoasis/vim-devicons'		        " Devicons - needs a NerdFont installed
 Plug 'Raimondi/delimitMate'             " Autoclose for quotes, brackets, etc
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }	" Autocomplete
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'			        " Search in files
+Plug 'junegunn/fzf.vim'			            " Search in files
 
 " statusline
 Plug 'vim-airline/vim-airline'          " bottom colored statusline
 Plug 'vim-airline/vim-airline-themes'   " Themes
 
 " git
-Plug 'tpope/vim-fugitive'		        " Git. Use ':Git [add/commit/diff/etc...]'
-Plug 'tpope/vim-rhubarb' 		        " Required by fugitive to :GbrowsE
-Plug 'airblade/vim-gitgutter'           " Git. Shows on left col modified or added lines
+Plug 'tpope/vim-fugitive'		          " Git. Use ':Git [add/commit/diff/etc...]'
+Plug 'tpope/vim-rhubarb' 		          " Required by fugitive to :GbrowsE
+Plug 'airblade/vim-gitgutter'         " Git. Shows on left col modified or added lines
 
 " others
-Plug 'Yggdroot/indentLine'              " Display indention levels 
+Plug 'Yggdroot/indentLine'            " Display indention levels 
 Plug 'tmhedberg/SimpylFold'		        " Folding code
-Plug 'vim-scripts/grep.vim'             " Grep commands
-Plug 'vim-scripts/CSApprox'             " Enable colorscheme in terminal-vim
-Plug 'majutsushi/tagbar'                " TagbarToggle. Maps the file's function structure in a right panel 
-Plug 'dense-analysis/ale'               " Syntax check
+Plug 'vim-scripts/grep.vim'           " Grep commands
+Plug 'vim-scripts/CSApprox'           " Enable colorscheme in terminal-vim
+Plug 'majutsushi/tagbar'              " TagbarToggle. Maps the file's function structure in a right panel 
+Plug 'dense-analysis/ale'             " Syntax check
 
 " Syntax support
-Plug 'mattn/emmet-vim'	    	    	" emmet
-Plug 'tpope/vim-haml'		        	" .HAML
-Plug 'hail2u/vim-css3-syntax'		    " .CSS
-Plug 'gko/vim-coloresque'	        	" color highlighting in CSS/SASS/LESS'
+Plug 'mattn/emmet-vim'	    	    	  " emmet
+Plug 'tpope/vim-haml'		        	    " .HAML
+Plug 'hail2u/vim-css3-syntax'		      " .CSS
+Plug 'gko/vim-coloresque'	        	  " color highlighting in CSS/SASS/LESS'
 Plug 'pangloss/vim-javascript'	    	" .JS
 Plug 'leafgarland/typescript-vim'   	" .TS
 Plug 'davidhalter/jedi-vim'		        " .PY
@@ -110,29 +110,29 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 
 " Search
-set hlsearch			" Highlight matching search patterns
-set incsearch			" Enable incremental search
+set hlsearch			  " Highlight matching search patterns
+set incsearch			  " Enable incremental search
 set ignorecase			" Include matching uppercase words with lowercase search
-set smartcase			" Include only uppercase words with uppercase search
+set smartcase			  " Include only uppercase words with uppercase search
 
 set backspace=indent,eol,start	" Fix Common backspace problems
-set fileformats=unix,dos,mac	" OS support
-set hidden			            " Enable hidden buffers
-set clipboard=unnamed		    " Use the system clipboard instead of the vim's one
-set nocompatible		        " Fix possible erros placing the .vimrc in wrong dir
-set wrap			            " Wraps text avoiding horizontal scroll
-set linebreak			        " Wraps text at the end of the word, avoid split words in half
-set nolist			            " Dont display whitespaces as characters
-syntax on			            " Turn on syntax highlighting
-filetype off			        " Helps force plugins to load correctly when its turned back on below
-filetype plugin indent on	    " Helps plugins to load correctly
+set fileformats=unix,dos,mac	  " OS support
+set hidden			                " Enable hidden buffers
+set clipboard=unnamed		        " Use the system clipboard instead of the vim's one
+set nocompatible		            " Fix possible erros placing the .vimrc in wrong dir
+set wrap			                  " Wraps text avoiding horizontal scroll
+set linebreak			              " Wraps text at the end of the word, avoid split words in half
+set nolist			                " Dont display whitespaces as characters
+syntax on			                  " Turn on syntax highlighting
+filetype off			              " Helps force plugins to load correctly when its turned back on below
+filetype plugin indent on	      " Helps plugins to load correctly
 
-set scrolloff=5			        " Display 5 lines above/below cursor when scrolling with a mouse
-set ttyfast			            " Fast scrolling inside vim
-set laststatus=2		        " Status bar
-set showmode			        " Display options
-set showcmd			            " Display options
-set matchpairs+=<:>		        " Count < and > as matchable characters to jump with %
+set scrolloff=5			            " Display 5 lines above/below cursor when scrolling with a mouse
+set ttyfast			                " Fast scrolling inside vim
+set laststatus=2		            " Status bar
+set showmode			              " Display options
+set showcmd			                " Display options
+set matchpairs+=<:>		          " Count < and > as matchable characters to jump with %
 set viminfo='100,<9999,s100	    " Store max 100 files, 9999 text lines or 100kb of data. Saves vim to crash with large data
 
 
@@ -143,12 +143,12 @@ set viminfo='100,<9999,s100	    " Store max 100 files, 9999 text lines or 100kb 
 " └────────────────────────────────────────────────────────────
 let mapleader = ','		" Mapleader
 set ruler
-set number 			    " Number line absolute
+set number 			      " Number line absolute
 set relativenumber		" Number line relative
-set bg=dark			    " Dark mode
-set splitbelow			" Vertical split default
-set splitright			" Horizontal split default
-set showmatch			" Matching '"({[< characters
+set bg=dark			      " Dark mode
+set splitbelow			  " Vertical split default
+set splitright			  " Horizontal split default
+set showmatch			    " Matching '"({[< characters
 
 " Tabs. May be overridden by autocmd rules
 set tabstop=4
