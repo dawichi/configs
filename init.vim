@@ -1,19 +1,31 @@
-" vim-bootstrap 2021-03-25 22:29:04
-
-"*****************************************************************************
-"" Vim-Plug core
-"*****************************************************************************
+"  __  __         _       _ _         _           
+" |  \/  |       (_)     (_) |       (_)          
+" | \  / |_   _   _ _ __  _| |___   ___ _ __ ___  
+" | |\/| | | | | | | '_ \| | __\ \ / / | '_ ` _ \ 
+" | |  | | |_| | | | | | | | |_ \ V /| | | | | | |
+" |_|  |_|\__, | |_|_| |_|_|\__(_)_/ |_|_| |_| |_|
+"          __/ |                                  
+"         |___/
+"
+"
+"	Hi! I have spent several months perfecting this file to a level where
+"	I am comfortable using nvim. I've documented it as much as possible so
+"	you can easily customize it! I hope it can help if you are starting
+"	with vim and you are not sure what configuration to follow ^^
+"	
+"		https://github.com/dawichi
+"
+"
+" ┌────────────────────────────────────────────────────────────
+" │	1. vim-plug 
+" └────────────────────────────────────────────────────────────
+" Checks if Vim-Plug plugin manager is installed
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 if has('win32')&&!has('win64')
   let curl_exists=expand('C:\Windows\Sysnative\curl.exe')
 else
   let curl_exists=expand('curl')
 endif
-
-let g:vim_bootstrap_langs = "html,javascript,php,python,typescript"
-let g:vim_bootstrap_editor = "nvim"				" nvim or vim
-let g:vim_bootstrap_theme = "dracula"
-let g:vim_bootstrap_frams = "vuejs"
 
 if !filereadable(vimplug_exists)
   if !executable(curl_exists)
@@ -28,41 +40,39 @@ if !filereadable(vimplug_exists)
   autocmd VimEnter * PlugInstall
 endif
 
+
+" ┌────────────────────────────────────────────────────────────
+" │	2. vim-plug plugins
+" └────────────────────────────────────────────────────────────
 " Required:
 call plug#begin(expand('~/.config/nvim/plugged'))
 
-"*****************************************************************************
-"" Plug install packages
-"*****************************************************************************
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
-Plug 'vim-scripts/grep.vim'
-Plug 'vim-scripts/CSApprox'
-Plug 'Raimondi/delimitMate'
-Plug 'majutsushi/tagbar'
-Plug 'dense-analysis/ale'
-Plug 'Yggdroot/indentLine'
-Plug 'editor-bootstrap/vim-bootstrap-updater'
-Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
-Plug 'morhetz/gruvbox' " color theme
+" basics
+Plug 'scrooloose/nerdtree'              " Directory explorer
+Plug 'tpope/vim-commentary'             " Comment with 'gcc' or 'gc' + Arrows
+Plug 'morhetz/gruvbox'                  " Color theme
+Plug 'ryanoasis/vim-devicons'           " Devicons - needs a NerdFont installed
+Plug 'Raimondi/delimitMate'             " Autoclose for quotes, brackets, etc
+Plug 'neoclide/coc.nvim'                " Autocomplete
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'                 " Search in files
 
+" statusline
+Plug 'vim-airline/vim-airline'          " bottom colored statusline
+Plug 'vim-airline/vim-airline-themes'   " Themes
 
-if isdirectory('/usr/local/opt/fzf')
-  Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-else
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-  Plug 'junegunn/fzf.vim'
-endif
-let g:make = 'gmake'
-if exists('make')
-        let g:make = 'make'
-endif
-Plug 'Shougo/vimproc.vim', {'do': g:make}
+" git
+Plug 'tpope/vim-fugitive'               " Git. Use ':Git [add/commit/diff/etc...]'
+Plug 'tpope/vim-rhubarb'                " Required by fugitive to :GbrowsE
+Plug 'airblade/vim-gitgutter'           " Git. Shows on left col modified or added lines
+
+" others
+Plug 'Yggdroot/indentLine'              " Display indention levels 
+Plug 'tmhedberg/SimpylFold'             " Folding code
+Plug 'vim-scripts/grep.vim'             " Grep commands
+Plug 'vim-scripts/CSApprox'             " Enable colorscheme in terminal-vim
+Plug 'majutsushi/tagbar'                " TagbarToggle. Maps the file's function structure in a right panel 
+Plug 'dense-analysis/ale'               " Syntax check
 
 "" Vim-Session
 Plug 'xolox/vim-misc'
@@ -72,50 +82,19 @@ Plug 'xolox/vim-session'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-"*****************************************************************************
-"" Custom bundles
-"*****************************************************************************
-
-Plug 'tmhedberg/SimpylFold'
-
-" html
-"" HTML Bundle
-Plug 'hail2u/vim-css3-syntax'
-Plug 'gko/vim-coloresque'
-Plug 'tpope/vim-haml'
-Plug 'mattn/emmet-vim'
-
-
-" javascript
-"" Javascript Bundle
-Plug 'jelera/vim-javascript-syntax'
-
-
-" php
-"" PHP Bundle
-Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install --no-dev -o'}
-Plug 'stephpy/vim-php-cs-fixer'
-
-
-" python
-"" Python Bundle
-Plug 'davidhalter/jedi-vim'
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-
-
-" typescript
-Plug 'leafgarland/typescript-vim'
+" Syntax support
+Plug 'mattn/emmet-vim'                  " emmet
+Plug 'tpope/vim-haml'                   " .HAML
+Plug 'hail2u/vim-css3-syntax'           " .CSS
+Plug 'gko/vim-coloresque'               " color highlighting in CSS/SASS/LESS'
+Plug 'pangloss/vim-javascript'          " .JS
+Plug 'leafgarland/typescript-vim'       " .TS
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'davidhalter/jedi-vim'             " .PY
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
-
-" vuejs
-Plug 'posva/vim-vue'
-Plug 'leafOfTree/vim-vue-plugin'
-
-
-
-"*****************************************************************************
-"*****************************************************************************
 
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local_bundles.vim"))
@@ -125,40 +104,78 @@ endif
 call plug#end()
 
 " Required:
-filetype plugin indent on
+filetype off                        " Helps force plugins to load correctly when its turned back on below
+filetype plugin indent on           " Helps plugins to load correctly
 
-
-"*****************************************************************************
-"" Basic Setup
-"*****************************************************************************"
+" ┌────────────────────────────────────────────────────────────
+" │	3. vim base configs - recommended
+" └────────────────────────────────────────────────────────────
 "" Encoding
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
+" Search
+set hlsearch                        " Highlight matching search patterns
+set incsearch                       " Enable incremental search
+set ignorecase                      " Include matching uppercase words with lowercase search
+set smartcase                       " Include only uppercase words with uppercase search
 
-"" Fix backspace indent
-set backspace=indent,eol,start
+set backspace=indent,eol,start      " Fix Common backspace problems
+set fileformats=unix,dos,mac        " OS support
+set hidden                          " Enable hidden buffers
 
-"" Tabs. May be overridden by autocmd rules
+set clipboard=unnamed               " Use the system clipboard instead of the vim's one
+set nocompatible                    " Fix possible erros placing the .vimrc in wrong dir
+set wrap                            " Wraps text avoiding horizontal scroll
+set linebreak                       " Wraps text at the end of the word, avoid split words in half
+set nolist                          " Dont display whitespaces as characters
+syntax on                           " Turn on syntax highlighting
+
+set scrolloff=5                     " Display 5 lines above/below cursor when scrolling with a mouse
+set ttyfast                         " Fast scrolling inside vim
+set laststatus=2                    " Status bar
+set showmode                        " Display options
+set showcmd                         " Display options
+set matchpairs+=<:>                 " Count < and > as matchable characters to jump with %
+set viminfo='100,<9999,s100         " Store max 100 files, 9999 text lines or 100kb of data. Saves vim to crash with large data
+
+" enable folding
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
+
+" ┌────────────────────────────────────────────────────────────
+" │	4. vim custom options - personalized
+" └────────────────────────────────────────────────────────────
+let mapleader = ','                 " Mapleader
+set ruler
+set number                          " Number line absolute
+set relativenumber                  " Number line relative
+colorscheme gruvbox                 " Colorscheme
+set bg=dark                         " Dark mode
+set splitbelow                      " Vertical split default
+set splitright                      " Horizontal split default
+set showmatch                       " Matching '"({[< characters
+
+" Tabs. May be overridden by autocmd rules
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 set expandtab
 
-"" Map leader to ,
-let mapleader=','
+" insert/normal mode with i/ii
+:imap ii <Esc>	
 
-"" Enable hidden buffers
-set hidden
+" close nerdtree when open a file
+let NERDTreeQuitOnOpen=1
 
-"" Searching
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
+" ┌────────────────────────────────────────────────────────────
+" │	5. other confs, not very documented, just trust it
+" └────────────────────────────────────────────────────────────
 
-set fileformats=unix,dos,mac
+" .-.-.-.-.-.-..-.-.-.-.-.-.-.-.-.-.-.-.-...
+
 
 if exists('$SHELL')
     set shell=$SHELL
@@ -175,13 +192,9 @@ let g:session_command_aliases = 1
 "*****************************************************************************
 "" Visual Settings
 "*****************************************************************************
-syntax on
-set ruler
-set number
-set relativenumber
 
 let no_buffers_menu=1
-colorscheme gruvbox
+
 
 set mousemodel=popup
 set t_Co=256
@@ -201,21 +214,13 @@ else
   let g:indentLine_concealcursor = 0
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
-
-  
 endif
-
-
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
 
 au TermEnter * setlocal scrolloff=0
 au TermLeave * setlocal scrolloff=3
-
-
-"" Status bar
-set laststatus=2
 
 "" Use modeline overrides
 set modeline
@@ -237,7 +242,7 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'base16'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -453,36 +458,10 @@ vnoremap K :m '<-2<CR>gv=gv
 "" Open current line on GitHub
 nnoremap <Leader>o :.Gbrowse<CR>
 
+
 "*****************************************************************************
 "" Custom configs
 "*****************************************************************************
-
-" my confs
-set showmatch
-
-" Enable folding
-set foldmethod=indent
-set foldlevel=99
-let g:SimpylFold_docstring_preview=1
-
-" Enable folding with the spacebar
-nnoremap <space> za
-
-" Autocomplete
-inoremap ' ''<Esc>i
-inoremap " ""<Esc>i
-inoremap < <><Esc>i
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-inoremap { {}<Esc>i
-inoremap {<CR> {<CR>}<Esc>0
-
-
-"
-" html
-" for html files, 2 spaces
-autocmd Filetype html setlocal ts=2 sw=2 expandtab
-
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
@@ -492,33 +471,6 @@ augroup vimrc-javascript
   autocmd!
   autocmd FileType javascript setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
 augroup END
-
-
-" php
-" Phpactor plugin
-" Include use statement
-nmap <Leader>u :call phpactor#UseAdd()<CR>
-" Invoke the context menu
-nmap <Leader>mm :call phpactor#ContextMenu()<CR>
-" Invoke the navigation menu
-nmap <Leader>nn :call phpactor#Navigate()<CR>
-" Goto definition of class or class member under the cursor
-nmap <Leader>oo :call phpactor#GotoDefinition()<CR>
-nmap <Leader>oh :call phpactor#GotoDefinitionHsplit()<CR>
-nmap <Leader>ov :call phpactor#GotoDefinitionVsplit()<CR>
-nmap <Leader>ot :call phpactor#GotoDefinitionTab()<CR>
-" Show brief information about the symbol under the cursor
-nmap <Leader>K :call phpactor#Hover()<CR>
-" Transform the classes in the current file
-nmap <Leader>tt :call phpactor#Transform()<CR>
-" Generate a new class (replacing the current file)
-nmap <Leader>cc :call phpactor#ClassNew()<CR>
-" Extract expression (normal mode)
-nmap <silent><Leader>ee :call phpactor#ExtractExpression(v:false)<CR>
-" Extract expression from selection
-vmap <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
-" Extract method from selection
-vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
 
 
 " python
@@ -555,13 +507,6 @@ let python_highlight_all = 1
 " typescript
 let g:yats_host_keyword = 1
 
-
-
-" vuejs
-" vim vue
-let g:vue_disable_pre_processors=1
-" vim vue plugin
-let g:vim_vue_plugin_load_full_syntax = 1
 
 
 "*****************************************************************************
@@ -611,3 +556,5 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
+
+
