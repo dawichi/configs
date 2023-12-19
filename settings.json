@@ -1,0 +1,88 @@
+// VSCode Settings
+{
+	"editor.renderControlCharacters": true,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+    "editor.fontLigatures": true,
+	"editor.detectIndentation": false,
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"workbench.editor.wrapTabs": true,
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"files.defaultLanguage": "english",
+	"editor.suggestSelection": "first",
+	"workbench.colorTheme": "GitHub Dark",
+	"workbench.iconTheme": "material-icon-theme",
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"svelte.enable-ts-plugin": true,
+	"redhat.telemetry.enabled": true,
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"editor.cursorBlinking": "phase",
+    "editor.cursorSmoothCaretAnimation": "on",
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[yaml]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[svelte]": {
+		"editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+    "editor.inlineSuggest.enabled": true,
+    "editor.bracketPairColorization.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false,
+        "yaml": true,
+        "javascript": true
+    },
+    "editor.fontFamily": "Consolas, Menlo, Monaco, 'Courier New', monospace",
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "haskell.manageHLS": "GHCup",
+    "errorLens.excludeBySource": [
+        "eslint(@typescript-eslint/no-unused-vars)",
+        "ts(2345)",
+        "eslint(semi)"
+    ],
+    "editor.guides.bracketPairs": true,
+    "editor.language.colorizedBracketPairs": [
+
+    ],
+    "editor.linkedEditing": true,
+    "window.commandCenter": false,
+    "workbench.editor.enablePreview": false,
+    "[astro]": {
+        "editor.defaultFormatter": "astro-build.astro-vscode"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "typescript.inlayHints.parameterNames.enabled": "literals",
+    "typescript.inlayHints.variableTypes.enabled": true,
+    "javascript.inlayHints.variableTypes.enabled": true,
+    "javascript.inlayHints.parameterNames.enabled": "literals",
+    "editor.codeActionsOnSave": {
+
+    
+
+    }
+}
